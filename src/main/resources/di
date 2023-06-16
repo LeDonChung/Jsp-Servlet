@@ -1,0 +1,17 @@
+Dùng @Inject để quản lý
+1. Thêm phụ thuộc
+<dependency>
+     <groupId>org.jboss.weld.servlet</groupId>
+     <artifactId>weld-servlet-shaded</artifactId>
+     <version>3.0.2.Final</version>
+</dependency>  
+2. Thêm beans.xml vào WEB-INF
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
+</beans>
+3. Thêm listener
+<listener>
+	<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+</listener>
