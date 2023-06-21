@@ -2,7 +2,6 @@ package com.laptrinhjavaweb.controller.admin;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.laptrinhjavaweb.service.IRoleService;
-import com.laptrinhjavaweb.service.impl.RoleSerivceImpl;
-
-@WebServlet(urlPatterns = { "/admin" })
-
-public class HomeController extends HttpServlet {
-	@Inject
-	private IRoleService roleService;
-	
+@WebServlet(urlPatterns = "/admin/hello")
+public class HelloController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("views/admin/home.jsp");
-		System.out.print(roleService.getAll());
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/home2.jsp");
 		rd.forward(req, resp);
 	}
+
 }

@@ -10,11 +10,18 @@ import com.laptrinhjavaweb.model.RoleModel;
 import com.laptrinhjavaweb.service.IRoleService;
 
 public class RoleSerivceImpl implements IRoleService{
+	
 	@Inject
 	private IRoleDAO roleDAO;
+	
 	@Override
 	public List<RoleModel> getAll() {
 		return roleDAO.findAll();
+	}
+	
+	@Override
+	public RoleModel insertOne(RoleModel role) {
+		return roleDAO.insertOne(role);
 	}
 	
 }
