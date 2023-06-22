@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title><c:out value="${title}"></c:out></title>
 
     <!-- Custom fonts for this template-->
     
@@ -20,5 +21,6 @@
 
     <!-- Custom styles for this template-->
     <link href="<c:url value='/template/admin/css/sb-admin-2.min.css'/>" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>

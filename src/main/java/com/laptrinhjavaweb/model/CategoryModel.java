@@ -4,6 +4,8 @@ public class CategoryModel {
 	private int id;
 	private String code;
 	private String name;
+	
+	
 	public CategoryModel(int id, String code, String name) {
 		super();
 		this.id = id;
