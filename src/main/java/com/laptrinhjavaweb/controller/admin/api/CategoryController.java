@@ -43,7 +43,7 @@ public class CategoryController extends HttpServlet{
 		mapper.writeValue(resp.getOutputStream(), modelNew);
 	}
 	
-	// Cập nhật
+	// Cập nhật 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub

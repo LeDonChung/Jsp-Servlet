@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><c:out value="${title}"></c:out></title>
+    <title>${title}</title>
 
     <!-- Custom fonts for this template-->
     

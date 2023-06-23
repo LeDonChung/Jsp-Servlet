@@ -5,10 +5,10 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/admin" />">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
-                </div>
+                </div> 
                 <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
             </a>
 
@@ -40,8 +40,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Manager:</h6>
-                        <a class="collapse-item" href="<c:url value="/admin/categories"></c:url>">Category</a>
-                    </div>
+                        
+                        <a class="collapse-item" href="<c:url value='/admin/categories'></c:url>">Category</a>
+                    </div> 
                 </div>
             </li>
 

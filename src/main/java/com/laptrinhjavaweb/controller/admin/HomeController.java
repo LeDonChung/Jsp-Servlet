@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.laptrinhjavaweb.constrants.SystemConstrants;
 import com.laptrinhjavaweb.service.IRoleService;
 import com.laptrinhjavaweb.service.impl.RoleSerivceImpl;
 
@@ -18,10 +19,11 @@ import com.laptrinhjavaweb.service.impl.RoleSerivceImpl;
 public class HomeController extends HttpServlet {
 	@Inject
 	private IRoleService roleService;
-	
+	 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("views/admin/home.jsp");
-		rd.forward(req, resp);
+		req.setAttribute(SystemConstrants.TITLE, "Home Admin");
+		rd.forward(req, resp); 
 	}
 }

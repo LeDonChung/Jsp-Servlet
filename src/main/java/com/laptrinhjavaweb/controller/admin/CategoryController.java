@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.laptrinhjavaweb.constrants.SystemConstrants;
 import com.laptrinhjavaweb.model.CategoryModel;
 import com.laptrinhjavaweb.service.ICategoryService;
 
@@ -21,22 +22,13 @@ public class CategoryController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/categories.jsp");
-		
-		String message = (String) req.getParameter("message");
-		
-		if(message != null) {
-			if(message.equals("ADD_SUCCESS")) {
-				req.setAttribute("message", "Add category successfully");
-			} else if(message.equals("ADD_FAIL")) {
-				req.setAttribute("message", "Add category fail");
-			}
-		}
-		 
-		req.setAttribute("title", "Category");
-		req.setAttribute("pageHeading", "Manager Category");
+
+		// get all category
 		List<CategoryModel> categories = categoryService.getALl();
-		req.setAttribute("age", 20);
-		req.setAttribute("categories", categories);
+		
+		
+		req.setAttribute(SystemConstrants.TITLE, "Category Manager");
+		req.setAttribute(SystemConstrants.CATEGORIES, categories);
 		rd.forward(req, resp);
 	}
 
