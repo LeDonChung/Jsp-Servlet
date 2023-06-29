@@ -3,6 +3,8 @@ package com.laptrinhjavaweb.dao.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import com.laptrinhjavaweb.model.CategoryModel;
+
 public abstract class BaseDao {
 	public Connection getConnection() {
 		try {

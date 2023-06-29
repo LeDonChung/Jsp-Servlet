@@ -37,12 +37,16 @@
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
 			<h1 class="h3 mb-0 text-gray-800">Category Manager</h1>
 			<!-- Button to Open the Modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#showAdd">ADD</button>
+			<a class="btn btn-primary"
+				href="<c:url value='/admin/categories?type=edit'/>">ADD</a>
 		</div>
 
 		<!-- Content Row -->
 		<div class="row">
+			<c:if test="${ message != null}">
+				<div class="alert alert-success" role="alert">${ message }</div>
+			</c:if> 
+
 			<table class="table" style="background-color: #fff;">
 				<thead>
 					<tr>
@@ -58,10 +62,10 @@
 							<td>${ category.id }</td>
 							<td>${ category.name }</td>
 							<td>${ category.code }</td>
-							<td>
-								<button type="button" class="btn btn-primary">Update</button>
-								<button type="button" class="btn btn-warning">Delete</button>
-							</td>
+							<td> 
+								<a href="<c:url value='/admin/categories?type=edit&id=${category.id}'/>" class="btn btn-primary">Update</a>
+								<button type="button" id="btnDelete" onclick="handlerActionDelete(${ category.id })" class="btn btn-warning">Delete</button>
+							</td>  
 						</tr>
 					</c:forEach>
 
@@ -72,18 +76,17 @@
 	</div>
 	<!-- /.container-fluid -->
 
-	<!-- The Modal -->
+	<!-- The Modal 
+	
 	<div class="modal fade" id="showAdd">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
-				<!-- Modal Header -->
 				<div class="modal-header">
 					<h4 class="modal-title">Add category</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal body -->
 				
 				<form id="formSubmit">
 				
@@ -101,7 +104,6 @@
 				</form>
 				
 
-				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
@@ -109,44 +111,30 @@
 			</div>
 		</div>
 	</div>
-
+--->
+	
 	<script>
-		$(document).ready(function() {
-			$('#formSubmit').submit(function(event) {
-				// chặn sự kiện mặc địnhj cuar form
-				event.preventDefault();
-
-				// lấy data
-				let nameValue = $('#name').val();
-				let codeValue = $('#code').val();
-
-				// tạo object
-				let objectJson = {};
-				// thêm value vào object theo cặp  {key: value}
-				objectJson['name'] = nameValue;
-				objectJson['code'] = codeValue;
- 
-				// convert object -> json
-				// console.log(JSON.stringify(objectJson));
-
-				// call api
-
-				$.ajax({
+		function handlerActionDelete(id) {
+			var data = {
+				'id': id
+			}
+			// data['id'] = id;
+			$.ajax({
 						url : 'http://localhost:8080/first-project/api/categories',
-						type : 'POST',
+						type : 'DELETE',
 						contentType : 'application/json',
 						dataType : 'json',
-						data : JSON.stringify(objectJson),
-						success : function(result) {
-							console.log(result);
-						},
+						data : JSON.stringify(data),
+						success : function(result) { 
+							window.location.href = 'http://localhost:8080/first-project/admin/categories?type=list&message=DELETE_CATEGORY_SUCCESS'
+						},  
 						error : function(error) { 
-							console.log(error);
+							window.location.href = 'http://localhost:8080/first-project/admin/categories?type=edit&message=SERVER_ERRORS'
 						}
 					});
-
-			});
-		});
-	</script>
+		}
+		
+	</script> 
+	
 </body>
 </html>

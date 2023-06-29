@@ -13,14 +13,13 @@ public class CategoryServiceImpl implements ICategoryService{
 	private ICategoryDAO iCategoryDAO;
 
 	@Override
-	public List<CategoryModel> getALl() {
+	public List<CategoryModel> getAll() {
 		// TODO Auto-generated method stub
 		return iCategoryDAO.findAll();
 	}
 
 	@Override
 	public CategoryModel insertOne(CategoryModel model) {
-		// TODO Auto-generated method stub
 		return iCategoryDAO.insertOne(model);
 	}
 
@@ -32,6 +31,16 @@ public class CategoryServiceImpl implements ICategoryService{
 	@Override
 	public List<CategoryModel> getAllByName(String name) {
 		return iCategoryDAO.findAllByName(name);
+	}
+
+	@Override
+	public CategoryModel getById(Integer id) {
+		return iCategoryDAO.findById(id);
+	}
+
+	@Override
+	public CategoryModel updateOne(CategoryModel model) {
+		return iCategoryDAO.updateOne(model);
 	}
 	
 	

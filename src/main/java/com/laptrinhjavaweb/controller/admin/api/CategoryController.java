@@ -26,7 +26,7 @@ public class CategoryController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		
-		List<CategoryModel> categories = iCategoryService.getALl();
+		List<CategoryModel> categories = iCategoryService.getAll();
 		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(resp.getOutputStream(), categories);
@@ -36,9 +36,11 @@ public class CategoryController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
-		CategoryModel model = HttpUtil.of(req.getReader()).toModel(CategoryModel.class);
 		
+		CategoryModel model = HttpUtil.of(req.getReader()).toModel(CategoryModel.class);
+		 
 		CategoryModel modelNew = iCategoryService.insertOne(model);
+		 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(resp.getOutputStream(), modelNew);
 	}
@@ -46,7 +48,16 @@ public class CategoryController extends HttpServlet{
 	// Cập nhật 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		
+		CategoryModel model = HttpUtil.of(req.getReader()).toModel(CategoryModel.class);
+		
+		model = iCategoryService.updateOne(model);
+		
+		ObjectMapper mapper  = new ObjectMapper();
+		mapper.writeValue(resp.getOutputStream(), model); 
+		
 		super.doPut(req, resp);
 	}
 	
@@ -56,8 +67,9 @@ public class CategoryController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		CategoryModel model = HttpUtil.of(req.getReader()).toModel(CategoryModel.class);
-		
+		 
 		int status = iCategoryService.deleteOne(model.getId());
+		 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(resp.getOutputStream(), status);
 	}

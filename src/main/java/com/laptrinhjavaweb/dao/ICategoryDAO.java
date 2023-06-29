@@ -10,4 +10,5 @@ public interface ICategoryDAO {
 	CategoryModel updateOne(CategoryModel model);
 	int deleteOne(int id);
 	List<CategoryModel> findAllByName(String name);
-}
+	CategoryModel findById(Integer id);
+} 

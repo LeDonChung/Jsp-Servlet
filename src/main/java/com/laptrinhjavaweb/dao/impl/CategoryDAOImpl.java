@@ -262,4 +262,55 @@ public class CategoryDAOImpl extends BaseDao implements ICategoryDAO {
 		return categories;
 	}
 
+	@Override
+	public CategoryModel findById(Integer idS) {
+		CategoryModel model = null; 
+		Connection conn = null;
+		Statement statement = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+
+			if (conn != null) {
+				statement = conn.createStatement();
+				String query = String.format("SELECT *FROM categories where id = %d", idS);
+				rs = statement.executeQuery(query);
+
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String code = rs.getString("code");
+					String name = rs.getString("name");
+					model = new CategoryModel(id, code, name);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return model;
+	}
+
 }
