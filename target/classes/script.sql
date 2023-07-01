@@ -37,6 +37,9 @@ create table products(
     sale_price double,
     cost_price double,
     quantity int,
-    desciption TEXT,
+    description TEXT,
+    imageUrl TEXT,
+    is_activated boolean,
+    is_deleted boolean
     category_id INT references categories(id)
 );
