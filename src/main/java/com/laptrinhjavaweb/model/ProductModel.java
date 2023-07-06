@@ -103,6 +103,12 @@ public class ProductModel {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+	@Override
+	public String toString() {
+		return "ProductModel [id=" + id + ", productName=" + productName + ", salePrice=" + salePrice + ", costPrice="
+				+ costPrice + ", quantity=" + quantity + ", description=" + description + ", imageUrl=" + imageUrl
+				+ ", categoryId=" + categoryId + ", is_deleted=" + is_deleted + ", is_activated=" + is_activated + "]";
+	}
 	
 	
 	

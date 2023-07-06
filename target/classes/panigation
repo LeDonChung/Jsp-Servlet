@@ -1,0 +1,28 @@
+https://josecebe.github.io/twbs-pagination/
+
+panigation
+- page: page hiện tại muốn tới
+- totalPages: tổng số page = tổng số item(totalItem) / số lượng page hiển thị trên thanh panigation(limit)
+- Sorter: sortBy: sắp xếp kiểu?(giảm dần, tăng dần theo tiêu chí), sortName: sắp xếp
+theo gì(tên, giá)
+
+- offset = page - 1 * limit(lấy bắt đầu từ vị trí nào)
+
+1->20
+12345: page = 1
+5678910: page = 2
+11->15: page = 3
+15-20: page = 4
+
+
+totalItem = 20
+limit = 5
+totalPages = (20/5 = 4)
+page = 1: offset = 1-1 * 5 = 0
+LIMIT offset, limit
+-> 0, 4
+page = 2: offset = 2-1 * 5 = 5
+-> 5 -> 9
+
+
+/categories?type=list&page=1&limit=&sortBy=&sortName=

@@ -313,4 +313,107 @@ public class CategoryDAOImpl extends BaseDao implements ICategoryDAO {
 		return model;
 	}
 
+	@Override
+	public Integer count() {
+		Connection conn = null;
+		Statement statement = null;
+		ResultSet rs = null;
+		Integer count = 0;
+		try {
+			conn = getConnection();
+
+			if (conn != null) {
+				statement = conn.createStatement();
+				String query = String.format("SELECT COUNT(*) FROM categories");
+				rs = statement.executeQuery(query);
+
+				while (rs.next()) {
+					count = rs.getInt(1);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return count;
+	}
+
+	@Override
+	public List<CategoryModel> getAll(Integer offset, Integer limit, String sortBy, String sortName) {
+		List<CategoryModel> categories = new ArrayList<>();
+		Connection conn = null;
+		Statement statement = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+
+			if (conn != null) {
+				statement = conn.createStatement();
+				StringBuilder query = new StringBuilder("SELECT *FROM categories");
+				query.append(String.format(" ORDER BY %s %s", sortName, sortBy));
+				query.append(String.format(" LIMIT %d, %d", offset, limit));
+				
+				rs = statement.executeQuery(query.toString());
+
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String code = rs.getString("code");
+					String name = rs.getString("name");
+					CategoryModel category = new CategoryModel(id, code, name);
+					categories.add(category);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return categories;
+	}
+
 }

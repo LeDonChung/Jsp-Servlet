@@ -11,4 +11,6 @@ public interface ICategoryDAO {
 	int deleteOne(int id);
 	List<CategoryModel> findAllByName(String name);
 	CategoryModel findById(Integer id);
+	Integer count();
+	List<CategoryModel> getAll(Integer offset, Integer limit, String sortBy, String sortName);
 } 

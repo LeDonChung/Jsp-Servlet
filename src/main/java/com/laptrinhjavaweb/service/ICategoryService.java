@@ -11,4 +11,6 @@ public interface ICategoryService {
 	List<CategoryModel> getAllByName(String name);
 	CategoryModel getById(Integer id);
 	CategoryModel updateOne(CategoryModel model);
+	Integer count();
+	List<CategoryModel> findAll(Integer offset, Integer valueOf, String sortBy, String sortName);
 }

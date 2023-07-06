@@ -15,8 +15,16 @@ public class MessageUtils {
 				return "Delete category successfully.";
 			} else if(param.equalsIgnoreCase("UPDATE_CATEGORY_SUCCESS")) {
 				return "Update category successfully.";
-			}  
-		}
+			} else if(param.equalsIgnoreCase("DELETE_PRODUCT_SUCCESS")) {
+				return "Delete product successfully.";
+			} else if(param.equalsIgnoreCase("ENABLE_PRODUCT_SUCCESS")) {
+				return "Enable product successfully.";
+			} else if(param.equalsIgnoreCase("UPDATE_PRODUCT_SUCCESS")) {
+				return "Update product successfully";
+			} else if(param.equalsIgnoreCase("ADD_PRODUCT_SUCCESS")) {
+				return "Add product successfully";
+			}
+		} 
 		return "";
 	}
 }

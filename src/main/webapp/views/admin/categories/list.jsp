@@ -46,7 +46,6 @@
 			<c:if test="${ message != null}">
 				<div class="alert alert-success" role="alert">${ message }</div>
 			</c:if> 
-
 			<table class="table" style="background-color: #fff;">
 				<thead>
 					<tr>
@@ -70,7 +69,19 @@
 					</c:forEach>
 
 				</tbody>
+				
 			</table>
+			<form id="formSubmit">
+				<nav style="display: block; margin: 0 auto;" aria-label="Page navigation">
+        			<ul class="pagination" id="pagination"></ul>
+    			</nav>
+    			<input type="hidden" value="" name="limit" id="limit">
+    			<input type="hidden" value="" name="page" id="page">
+    			<input type="hidden" value="" name="sortBy" id="sortBy">
+    			<input type="hidden" value="" name="sortName" id="sortName">
+    			<input type="hidden" value="" name="type" id="type">
+			</form>
+			
 		</div>
 
 	</div>
@@ -110,11 +121,33 @@
 
 			</div>
 		</div>
-	</div>
+	</div> 
 --->
-	
-	<script>
-		function handlerActionDelete(id) {
+	<script type="text/javascript">
+		let totalPages = ${model.totalPages} ;
+		let limit = ${model.limit};
+		let currentPage = ${model.page};
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages, // tổng số page
+            visiblePages: limit, // số page muốn hiển thị
+            startPage: currentPage, // bắt đầu từ page nào
+            onPageClick: function (event, page) { 
+            	if (currentPage != page) {
+    				$('#limit').val(limit);
+    				// truyền page lên thẻ input
+    				$('#page').val(page);
+    				$('#sortBy').val("desc");
+    				$('#sortName').val("name");
+    				$('#type').val("list");
+    				// khi bấm vào thì submit cái id đặt bên trên
+    				$('#formSubmit').submit();
+    			}
+            }
+        }).on('page', function (event, page) {
+        	console.log(page, event);
+        });
+        
+        function handlerActionDelete(id) {
 			var data = {
 				'id': id
 			}
@@ -133,8 +166,7 @@
 						}
 					});
 		}
-		
-	</script> 
+</script>
 	
 </body>
 </html>

@@ -52,6 +52,8 @@ public class ProductController extends HttpServlet{
 	}
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
 		String paramEnable = req.getParameter("enable");
 		String paramDisable = req.getParameter("disable");
 		ProductModel model = HttpUtil.of(req.getReader()).toModel(ProductModel.class);

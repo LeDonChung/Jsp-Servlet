@@ -21,6 +21,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<c:url value='/template/admin/css/sb-admin-2.min.css'/>" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="<c:url value='/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/template/paging/jquery.twbsPagination.js'/>"></script>
 </head>

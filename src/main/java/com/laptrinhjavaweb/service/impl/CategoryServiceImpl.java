@@ -42,6 +42,16 @@ public class CategoryServiceImpl implements ICategoryService{
 	public CategoryModel updateOne(CategoryModel model) {
 		return iCategoryDAO.updateOne(model);
 	}
+
+	@Override
+	public Integer count() {
+		return iCategoryDAO.count();
+	}
+
+	@Override
+	public List<CategoryModel> findAll(Integer offset, Integer limit, String sortBy, String sortName) {
+		return iCategoryDAO.getAll(offset, limit, sortBy, sortName);
+	}
 	
 	
 	

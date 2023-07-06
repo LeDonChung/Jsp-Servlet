@@ -41,7 +41,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Manager:</h6>
                         
-                        <a class="collapse-item" href="<c:url value='/admin/categories?type=list'></c:url>">Category</a>
+                        <a class="collapse-item" href="<c:url value='/admin/categories?type=list&page=1&limit=4&sortBy=desc&sortName=name'></c:url>">Category</a>
+                        <a class="collapse-item" href="<c:url value='/admin/products?type=list'></c:url>">Product</a>
                     </div> 
                 </div>
             </li>

@@ -5,8 +5,7 @@
 <script
 	src="<c:url value='/template/admin/vendor/jquery/jquery.min.js'/>"></script>
 
-<script
-	src="<c:url value='/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+
 
 <!-- Core plugin JavaScript-->
 
